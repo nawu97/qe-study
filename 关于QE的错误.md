@@ -70,7 +70,54 @@ A string describing the task to be performed. Options are:
  
  ## 注意关键词啊！
  
+## 报错C：
 
+```
+
+     Program PWSCF v.6.6 starts on 24Dec2020 at 12:40:16
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+          URL http://www.quantum-espresso.org",
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on    36 processors
+
+     MPI processes distributed on     1 nodes
+     R & G space division:  proc/nbgrp/npool/nimage =      36
+     Fft bands division:     nmany     =       1
+     Reading input from pw.graphene.relax.in
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine  read_namelists (1):
+      bad line in namelist &system: "  ecut = 30, ecutrho=300,," (error could be in the previous line)
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+     stopping ...
+Abort(1) on node 0 (rank 0 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 1693636.0 ON comput126 CANCELLED AT 2020-12-24T12:40:17 ***
+srun: error: comput126: tasks 0-35: Killed
+
+
+ ```
+ ## 原因：
+ 
+
+ ```
+&SYSTEM
+  ibrav = 4, celldm(1) = 2.46772, nat = 2, ntyp = 1,
+  ecut = 30, ecutrho=300,,
+  occupations='smearing', smearing='gaussian', degauss=0.01,
+/
+```
+ **这里多打了一个,**
+
+ ## 注意细节啊！
+ 
  # 2.提交任务脚本格式错误
  
  ## 报错：
