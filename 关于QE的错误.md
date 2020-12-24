@@ -216,7 +216,7 @@ C   0.333333333333333   0.666666666666667   0.750000000000000
 K_POINTS {automatic}
 5 5 1 0 0 0
 ```
-**不妨加入`NMAELIST &CELL`部分，如下：
+**不妨加入`NMAELIST &CELL`部分，如下：**
 ```
 &CONTROL
   calculation='vc-relax',
