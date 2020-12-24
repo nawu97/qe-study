@@ -139,3 +139,114 @@ srun --mpi=pmi2 /public/home/wn970413/qe/q-e-qe-6.6-intel/bin
 需要加要执行的文件名还有输出的文件名，具体为：
 
 ```srun --mpi=pmi2 /public/home/wn970413/qe/q-e-qe-6.6-intel/bin/pw.x  -i pw.graphene.scf.in | tee pw.out ```( ```| tee```管道符识别输入输出)
+
+# 3.qe中关于*.in文件不完整带来的错误
+
+## 报错：
+
+```
+run: Job step aborted: Waiting up to 32 seconds for job step to finish.
+     Program PWSCF v.6.6 starts on 24Dec2020 at 21:22:21
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+          URL http://www.quantum-espresso.org",
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on    36 processors
+
+     MPI processes distributed on     1 nodes
+     R & G space division:  proc/nbgrp/npool/nimage =      36
+     Fft bands division:     nmany     =       1
+     Reading input from pw.graphene.relax.in
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine  read_namelists (2):
+      could not find namelist &cell
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+     stopping ...
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine  read_namelists (2):
+      could not find namelist &cell
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+     stopping ...
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine  read_namelists (2):
+      could not find namelist &cell
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+     stopping ...
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+```
+## 原因：由于*.in文件中缺少 `NMAELIST &CELL`
+```
+&CONTROL
+  calculation='vc-relax',
+  restart_mode='from_scratch'
+  prefix='Graphene_relax',
+  pseudo_dir = '../pseudo/',
+  outdir='../tmp',
+  forc_conv_thr=1.0d-5
+/
+&SYSTEM
+  ibrav = 4, celldm(1) = 2.46772, nat = 2, ntyp = 1,
+  ecutwfc = 30, ecutrho=300,
+  occupations='smearing', smearing='gaussian', degauss=0.01,
+/
+&ELECTRONS
+  conv_thr=1.0d-8
+/
+&IONS
+  ion_dynamics='bfgs'
+/
+ATOMIC_SPECIES
+   C   12.01060  C.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS {crystal}
+C   0.000000000000000   0.000000000000000   0.750000000000000
+C   0.333333333333333   0.666666666666667   0.750000000000000
+K_POINTS {automatic}
+5 5 1 0 0 0
+```
+**不妨加入`NMAELIST &CELL`部分，如下：
+```
+&CONTROL
+  calculation='vc-relax',
+  restart_mode='from_scratch'
+  prefix='Graphene_relax',
+  pseudo_dir = '../pseudo/',
+  outdir='../tmp',
+  forc_conv_thr=1.0d-5
+/
+&SYSTEM
+  ibrav = 4, celldm(1) = 2.46772, nat = 2, ntyp = 1,
+  ecutwfc = 30, ecutrho=300,
+  occupations='smearing', smearing='gaussian', degauss=0.01,
+/
+&ELECTRONS
+  conv_thr=1.0d-8
+/
+&CELL
+  cell_dynamics='bfgs',
+  press=0.0,
+  press_conv_thr=0.5
+/
+&IONS
+  ion_dynamics='bfgs'
+/
+ATOMIC_SPECIES
+   C   12.01060  C.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS {crystal}
+C   0.000000000000000   0.000000000000000   0.750000000000000
+C   0.333333333333333   0.666666666666667   0.750000000000000
+K_POINTS {automatic}
+5 5 1 0 0 0
+```
