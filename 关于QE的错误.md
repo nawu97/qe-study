@@ -1,20 +1,31 @@
 1.关键词错误
 
 报错：
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     
      Error in routine  read_namelists (2):
       could not find namelist &control
+      
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
      stopping ...
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-     Error in routine  read_namelists (2):
-      could not find namelist &control
+   
+   Error in routine  read_namelists (2):
+    could not find namelist &control
+      
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
  原因：
- forc_conv_thr=1.0d-5写成了force_conv_thr=1.0d-5
+ 
+ forc_conv_thr=1.0d-
+ 写成了 
+ force_conv_thr=1.0d-5
+ 
  注意关键词啊！
  
  2.提交任务脚本格式错误
