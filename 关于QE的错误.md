@@ -65,7 +65,7 @@ A string describing the task to be performed. Options are:
 'vc-md'
 (vc = variable-cell).
 ```
- **很明显**这里不是`c_relax`而是`vc-relax`
+ **很明显**这里不是`vc_relax`而是`vc-relax`
 
  
  ## 注意关键词啊！
