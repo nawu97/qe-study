@@ -114,7 +114,8 @@ srun: error: comput126: tasks 0-35: Killed
   occupations='smearing', smearing='gaussian', degauss=0.01,
 /
 ```
- **这里多打了一个,**
+ **这里多打了一个,** 
+ **还有这里应该`ecutwfc`打成了`ecut`**
 
  ## 注意细节啊！
  
