@@ -38,7 +38,8 @@
 
 module load compiler/intel/intel-compiler-2019u3
 module load mpi/intelmpi/2019u3
-srun --mpi=pmi2 /public/home/wn970413/qe/q-e-qe-6.6-intel/bin```
+srun --mpi=pmi2 /public/home/wn970413/qe/q-e-qe-6.6-intel/bin
+```
  
  ## 原因：
 srun --mpi=pmi2 /public/home/wn970413/qe/q-e-qe-6.6-intel/bin需要加要执行的文件名还有输出的文件名，具体为：
