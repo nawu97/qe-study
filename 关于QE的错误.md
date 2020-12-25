@@ -306,6 +306,12 @@ QE有问题，读到最后一行是空白就停了，没有空行容易读卡死
 ## 报错：
 ```
 http://xn--linux-9n1h./
+Intel MKL ERROR: Parameter 8 was incorrect on entry to ZGEMM .
+
+
+     Error in routine davcio (3):
+     wrong record length
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
      stopping ...
 Abort(1) on node 35 (rank 35 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 35
