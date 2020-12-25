@@ -322,4 +322,4 @@ davcio is the routine that performs most of the I/O operations (read from disk a
 
 **If it happens while restarting from a previous calculation:** you might be restarting from the wrong place, or from wrong data, or the files might be corrupted. Note that, since QE 5.1, restarting from arbitrary places is no more supported: the code must terminate cleanly.
 
-**If you are running two or more instances of pw.x at the same time, check if you are using the same file names in the same temporary directory. For instance, if you submit a series of jobs to a batch queue, do not use the same outdir and the same prefix, unless you are sure that one job doesn't start before a preceding one has finished.
+**If you are running two or more instances of pw.x at the same time**, check if you are using the same file names in the same temporary directory. For instance, if you submit a series of jobs to a batch queue, do not use the same outdir and the same prefix, unless you are sure that one job doesn't start before a preceding one has finished.
