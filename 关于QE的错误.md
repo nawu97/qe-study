@@ -256,7 +256,48 @@ K_POINTS {automatic}
 &CELL
 /
 ```
-### 重要的提醒！！！
+### 于是，重要的提醒！！！
 
 ### 一定要参见qe官网的指南，包括 `&ELECTRONS /`，`&IONS /`，`&CELL /`的顺序
 #### 先写 `&ELECTRONS /` 后写`&IONS /`最后写`&CELL /`
+
+示例改为：
+```
+
+&CONTROL
+   calculation='vc-relax',
+   restart_mode='from_scratch'
+   prefix='Graphene_relax',
+   pseudo_dir = '../pseudo-in-use/',
+   outdir='../tmp',
+   forc_conv_thr=1.0d-5,
+/
+&SYSTEM
+   ibrav = 4, celldm(1) = 2.46772, celldm(3) = 8.68503, nat = 2, ntyp = 1,
+   ecutwfc = 30, ecutrho=300,
+   occupations='smearing', smearing='gaussian', degauss=0.01,
+/
+&ELECTRONS
+   conv_thr=1.0d-8,
+/
+&IONS
+   ion_dynamics='bfgs',
+/
+&CELL
+   cell_dynamics='bfgs',
+   press=0.0d0,
+   press_conv_thr=0.5d0,
+/
+ATOMIC_SPECIES
+C  12.01060  C.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS {crystal}
+C   0.000000000000000   0.000000000000000   0.750000000000000
+C   0.333333333333333   0.666666666666667   0.750000000000000
+K_POINTS {automatic}
+5 5 1 0 0 0
+
+```
+# 4.qe自身的问题
+最好在输入文件最后一行加上空格
+QE有问题，读到最后一行是空白就停了，没有空行容易读卡死
+在QE的后处理程序里面经常遇到这样的错误
