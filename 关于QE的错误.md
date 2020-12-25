@@ -317,6 +317,9 @@ Abort(1) on node 19 (rank 19 in comm 0): application called MPI_Abort(MPI_COMM_W
 davcio is the routine that performs most of the I/O operations (read from disk and write to disk) in pw.x; error in davcio means a failure of an I/O operation.
 
 **If the error is reproducible and happens at the beginning of a calculation:** check if you have read/write permission to the scratch directory specified in variable outdir. Also: check if there is enough free space available on the disk you are writing to, and check your disk quota (if any).
+
 **If the error is irreproducible:** your might have flaky disks; if you are writing via the network using NFS (which you shouldn't do anyway), your network connection might be not so stable, or your NFS implementation is unable to work under heavy load
+
 **If it happens while restarting from a previous calculation:** you might be restarting from the wrong place, or from wrong data, or the files might be corrupted. Note that, since QE 5.1, restarting from arbitrary places is no more supported: the code must terminate cleanly.
+
 **If you are running two or more instances of pw.x at the same time, check if you are using the same file names in the same temporary directory. For instance, if you submit a series of jobs to a batch queue, do not use the same outdir and the same prefix, unless you are sure that one job doesn't start before a preceding one has finished.
