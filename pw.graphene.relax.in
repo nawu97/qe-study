@@ -1,0 +1,32 @@
+&CONTROL
+   calculation='vc-relax',
+   prefix='Graphene_relax',
+   pseudo_dir = './pseudo/',        
+   outdir='./tmp',
+   forc_conv_thr=1.0d-5
+/
+&SYSTEM
+   ibrav = 4, celldm(1) = 4.6648847, celldm(3) = 3.5194523, nat = 2, ntyp = 1,
+   ecutwfc = 30, ecutrho=300,
+   occupations='smearing', smearing='gaussian', degauss=0.01
+/
+&ELECTRONS
+   conv_thr=1.0d-8
+/
+&IONS
+   ion_dynamics='bfgs'
+/
+&CELL
+   cell_dynamics='bfgs',
+   press=0.0d0,
+   press_conv_thr=0.5d0
+/
+ATOMIC_SPECIES
+C  12.01060  C.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS {crystal}
+C   0.000000000000000   0.000000000000000   0.750000000000000 
+C   0.333333333333333   0.666666666666667   0.750000000000000 
+K_POINTS {automatic}
+5 5 1 0 0 0
+                                                                                                    
+
