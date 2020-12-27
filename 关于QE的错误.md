@@ -329,3 +329,74 @@ Abort(1) on node 19 (rank 19 in comm 0): application called MPI_Abort(MPI_COMM_W
 **If it happens while restarting from a previous calculation:** you might be restarting from the wrong place, or from wrong data, or the files might be corrupted. Note that, since QE 5.1, restarting from arbitrary places is no more supported: the code must terminate cleanly.
 
 **If you are running two or more instances of pw.x at the same time**, check if you are using the same file names in the same temporary directory. For instance, if you submit a series of jobs to a batch queue, do not use the same outdir and the same prefix, unless you are sure that one job doesn't start before a preceding one has finished.
+
+### 解析：`Intel MKL ERROR: Parameter 8 was incorrect on entry to ZGEMM`超过了可对角化的范围，也就是这个问题的方程无解，这个问题本身有问题
+仔细想想，应该是这个材料的结构 **不正确** 
+**官网上给出有关描述材料结构的两种方法，如下**
+1)ibrav!=0 利用celldm(1)-celldm(6)分别描述a,b,c,cos(ab),cos(ac),cos(bc)**注意**:这时候单位是Bohr,1Bohr=0.529Anstrom，具体格式如下：
+```
+&CONTROL
+   calculation='vc-relax',
+   prefix='Graphene_relax',
+   pseudo_dir = './pseudo/',
+   outdir='./tmp',
+   forc_conv_thr=1.0d-5
+/
+&SYSTEM
+   ibrav = 4, celldm(1) = 4.6648847, celldm(3) = 3.5194523, nat = 2, ntyp = 1,
+   ecutwfc = 30, ecutrho=300,
+   occupations='smearing', smearing='gaussian', degauss=0.01
+/
+&ELECTRONS
+   conv_thr=1.0d-8
+/
+&IONS
+   ion_dynamics='bfgs'
+/
+&CELL
+   cell_dynamics='bfgs',
+   press=0.0d0,
+   press_conv_thr=0.5d0
+/
+ATOMIC_SPECIES
+C  12.01060  C.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS {crystal}
+C   0.000000000000000   0.000000000000000   0.750000000000000
+C   0.333333333333333   0.666666666666667   0.750000000000000
+K_POINTS {automatic}
+5 5 1 0 0 0
+```
+2)ibrav=0 利用A=...(单位是Anstrom),CELL_PARAMETERS来描述原子位置，主要格式与VASP中的POSCAR对应，这个便于其后续查找对应，较为方便
+```
+&CONTROL
+   calculation='vc-relax',
+   prefix='Graphene_relax',
+   pseudo_dir = './pseudo/',
+   outdir='./tmp',
+   forc_conv_thr=1.0d-5
+/
+&SYSTEM
+   ibrav = 4, celldm(1) = 4.6648847, celldm(3) = 3.5194523, nat = 2, ntyp = 1,
+   ecutwfc = 30, ecutrho=300,
+   occupations='smearing', smearing='gaussian', degauss=0.01
+/
+&ELECTRONS
+   conv_thr=1.0d-8
+/
+&IONS
+   ion_dynamics='bfgs'
+/
+&CELL
+   cell_dynamics='bfgs',
+   press=0.0d0,
+   press_conv_thr=0.5d0
+/
+ATOMIC_SPECIES
+C  12.01060  C.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS {crystal}
+C   0.000000000000000   0.000000000000000   0.750000000000000
+C   0.333333333333333   0.666666666666667   0.750000000000000
+K_POINTS {automatic}
+5 5 1 0 0 0
+```
+## 注意：这两种格式相互转换时，要注意单位变换第一种单位是Bohr，第二种是Anstrom
