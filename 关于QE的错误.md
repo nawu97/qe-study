@@ -426,4 +426,4 @@ K_POINTS {automatic}
 ```
 occupations='smearing', smearing='gaussian', degauss=0.01
 ```
-这时，需要人为指定smearing跑一步（nstep=1），然后再利用`restart_mode='from_scratch'`更改为`restart_mode='restart'`在开始重新跑
+这时，需要人为指定smearing跑一步（nstep=1），然后再利用`restart_mode='from_scratch'`更改为`restart_mode='restart'`再开始重新跑
