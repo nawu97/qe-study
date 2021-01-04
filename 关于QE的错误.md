@@ -436,7 +436,7 @@ degauss=0.01
 ```
 对于绝缘体、半导体’
 ```
-occupations = 'fixed',
+occupations = 'fixed', ！还是这个！
 ```
 或者使用极小的degauss
 ```
