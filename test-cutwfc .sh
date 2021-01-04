@@ -39,7 +39,7 @@ EOF
     # collect the ecutwfc and total-energy from the pw.si.scf.out output-file
     
     grep -e 'kinetic-energy cutoff' -e ! pw.si.scf.out | \
-        awk '/kinetic-energy/ {ecut=$(NF-1)}
+        awk '/kinetic-energy/ {ecut=$(NF-1)} #处理了两行，一行ecut给了动能，零一行给了截断能
              /!/              {print ecut, $(NF-1)}' >> si.etot_vs_ecut
 
 done
