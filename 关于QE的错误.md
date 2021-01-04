@@ -413,3 +413,17 @@ K_POINTS {automatic}
 ```
 ## 原因：需要用prefix指定输入文件，在自洽基础上去非自洽，所以一定要注意prefix的合理性
 **scf(pw.x)--->nscf(pw.x)--->dos(dos.x)**
+# 7.开始时的错误
+```
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine electrons (1):
+     charge is wrong: smearing is needed
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+     stopping ...
+```
+## 原因：需要指定
+```
+occupations='smearing', smearing='gaussian', degauss=0.01
+```
+这时，需要人为指定smearing跑一步（nstep=1），然后再利用`restart_mode='from_scratch'`更改为`restart_mode='restart'`在开始重新跑
