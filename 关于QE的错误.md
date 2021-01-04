@@ -427,3 +427,21 @@ K_POINTS {automatic}
 occupations='smearing', smearing='gaussian', degauss=0.01
 ```
 这时，需要人为指定smearing跑一步（nstep=1），然后再利用`restart_mode='from_scratch'`更改为`restart_mode='restart'`再开始重新跑
+对于金属体系（或窄带隙，半金属等）：(1)加一些空带: 增大`nbnd`，具体取值根据体系的电子总数，默认最少4个空带，增加到足够空带，让最上面的空带占据几率趋向于零；(2)增加k点网格密度，以消除半满带对总能收敛的影响；(3)同时逐步地增大展宽，直到总能收敛。
+
+```
+occupations = 'smearing', 
+smearing='marzari-vanderbilt', 
+degauss=0.01
+```
+对于绝缘体、半导体’
+```
+occupations = 'fixed',
+```
+或者使用极小的degauss
+```
+occupations = 'smearing', 
+smearing='gauss', 
+degauss=1.0d-9,
+```
+
