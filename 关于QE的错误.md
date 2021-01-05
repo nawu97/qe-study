@@ -422,7 +422,9 @@ K_POINTS {automatic}
 
      stopping ...
 ```
-## 原因：需要指定
+## 原因：比较多，需要自己选择定夺
+
+### 1）需要指定
 ```
 occupations='smearing', smearing='gaussian', degauss=0.01
 ```
@@ -434,7 +436,7 @@ occupations = 'smearing',
 smearing='marzari-vanderbilt', 
 degauss=0.01
 ```
-对于绝缘体、半导体’
+### 2)对于绝缘体、半导体’
 ```
 occupations = 'fixed', ！还是这个！
 ```
@@ -444,4 +446,47 @@ occupations = 'smearing',
 smearing='gauss', 
 degauss=1.0d-9,
 ```
+### 3)赝势选择的不合理
+需要合适的选择赝势
+
+### 4) occupations 选择的不合理
+```
+Available options are:
+            
+'smearing' :
+gaussian smearing for metals;
+see variables smearing and degauss
+            
+'tetrahedra' :
+Tetrahedron method, Bloechl's version:
+P.E. Bloechl, PRB 49, 16223 (1994)
+Requires uniform grid of k-points, to be
+automatically generated (see card K_POINTS).
+Well suited for calculation of DOS,
+less so (because not variational) for
+force/optimization/dynamics calculations.
+            
+'tetrahedra_lin' :
+Original linear tetrahedron method.
+To be used only as a reference;
+the optimized tetrahedron method is more efficient.
+            
+'tetrahedra_opt' :
+Optimized tetrahedron method:
+see M. Kawamura, PRB 89, 094515 (2014).
+Can be used for phonon calculations as well.
+            
+'fixed' :
+for insulators with a gap
+            
+'from_input' :
+The occupation are read from input file,
+card OCCUPATIONS. Option valid only for a
+single k-point, requires nbnd to be set
+in input. Occupations should be consistent
+with the value of tot_charge.
+```
+这是官网上的指南，可以合适的未必完全按照说明书选择，有的时候直接选择‘tetrahedra’即可
+
+
 
