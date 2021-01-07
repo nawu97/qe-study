@@ -487,6 +487,15 @@ in input. Occupations should be consistent
 with the value of tot_charge.
 ```
 这是官网上的指南，可以合适的未必完全按照说明书选择，有的时候直接选择‘tetrahedra’即可
+# 8.
+```
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine read_input (2):
+     opening input file
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+     stopping ...
+
+```
 
 
