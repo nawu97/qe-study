@@ -497,5 +497,28 @@ with the value of tot_charge.
      stopping ...
 
 ```
+错误：##简直是*搞笑的*乌龙错误
+```
+#!/bin/bash
+#
+#SBATCH --job-name=qe
+#SBATCH --output=qe.output
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=52
+#SBATCH --time=3-00:00:00
+#SBATCH -p regular
 
+
+ulimit -s unlimited
+ulimit -c unlimited
+#module load pmix/2.2.2
+module load parallel_studio/2020.2.254
+module load intelmpi/2020.2.254
+EXEC=/home/users/nawu/qe/TDPW6.6/pw.x
+srun --mpi=pmi2   $EXEC -i  pw.NV..band.in | tee pw.NV.band.out
+#mpirun  $EXEC -i input.in | tee  result
+
+exit
+```
+多打了一个"."
 
