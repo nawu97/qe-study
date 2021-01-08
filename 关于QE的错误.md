@@ -527,7 +527,22 @@ exit
 /home/users/nawu/qe/TDPW6.6/plotband.x: too many arguments    2
 ```
 ## 错误原因：关于plotband.x的plotband.in的文件参数过于多，需要重新考虑其基本格式
-Look at Si.plotband.in
+例如： Si.plotband.in @https://www.tcm.phy.cam.ac.uk/~jry20/gipaw/ex2.html
+```
+#plotband.in文件格式：
+alas.freq    #输入的文件（如在前一步获得的bands.dat）
+0 600       # 设定的能量最大值和最小值
+freq.plot   #输出文件格式，如bands.xmgr
+freq.ps     #输出文件格式，如bands.ps
+0.0         #费米能级的能量
+50.0 0.0    #delta E 和参考能量
+
+```
+之后`plotband.x < Si.plotband.in > Si.plotband.out`即可
+
+
+
+
 The file contains
 input file (= bands.dat obtained in the earlier step).
 Emin and Emax (= -6.00 and 10.00).
