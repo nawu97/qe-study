@@ -541,13 +541,3 @@ freq.ps     #输出文件格式，如bands.ps
 之后`plotband.x < Si.plotband.in > Si.plotband.out`即可
 
 
-
-
-The file contains
-input file (= bands.dat obtained in the earlier step).
-Emin and Emax (= -6.00 and 10.00).
-output file in xmgrace format (bands.xmgr)
-output file in ps format (bands.ps)
-Fermi energy (= 6.337 eV)
-deltaE and reference energy (= 1.00 6.337)
-Run the plotting program: $plotband.x < Si.plotband.in > Si.plotband.out
