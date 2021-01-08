@@ -522,3 +522,8 @@ exit
 ```
 多打了一个"."
 
+# 9.关于plotband.x的错误
+```
+/home/users/nawu/qe/TDPW6.6/plotband.x: too many arguments    2
+```
+## 错误原因：关于plotband.x的plotband.in的文件参数过于多，需要重新考虑其基本格式
