@@ -565,4 +565,20 @@ freq.ps     #输出文件格式，如bands.ps
   output_format=5,
 \
 ```
-*可以发现fileot打错了*
+*可以发现fileot打错了还有打成反斜杠了*
+改为
+```
+&INPUTPP
+  prefix='NV-center_scf',
+  outdir='./tmp',
+  plot_num=0,
+  filplot='NV-chargedensity'
+/
+&PLOT
+  nfile=1,
+  weight(1)=1.0,
+  fileout='NV-chdens.xsf',
+  iflag=3,
+  output_format=5,
+/
+```
