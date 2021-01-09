@@ -549,3 +549,20 @@ freq.ps     #输出文件格式，如bands.ps
      reading inputpp namelist
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ```
+原因：
+```
+&INPUTPP
+  prefix='NV-center_scf',
+  outdir='./tmp',
+  plot_num=0,
+  filplot='NV-chargedensity'
+\
+&PLOT
+  nfile=1,
+  weight(1)=1.0,
+  fileot='NV-chdens.xsf',
+  iflag=3,
+  output_format=5,
+\
+```
+*可以发现fileot打错了*
