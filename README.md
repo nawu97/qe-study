@@ -8,3 +8,7 @@ tdapw-presentation主要包括关于tdapw的ppt,cif2cell文件包括转换cif文
 QE-Tutorial是关于QE的教程，主要针对的是graphene。
 
 QE计算的能带没有减去费米能级
+
+nstep 这个参数默认值：
+    1   如果calculation='scf','nscf','bands'
+    50  其他情况
