@@ -583,6 +583,7 @@ freq.ps     #输出文件格式，如bands.ps
 /
 ```
 # 11.对称性问题
+@https://pw-forum.pwscf.narkive.com/R4HBmxKk/error-in-routine-sym-rho-init-shell-lone-vector-with-fixed-fft-dimension
 ```
 task #        39
      from sym_rho_init_shell : error #         2
