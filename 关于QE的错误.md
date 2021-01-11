@@ -582,3 +582,9 @@ freq.ps     #输出文件格式，如bands.ps
   output_format=5,
 /
 ```
+# 11.对称性问题
+```
+task #        39
+     from sym_rho_init_shell : error #         2
+     lone vector
+```
