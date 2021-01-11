@@ -583,9 +583,12 @@ freq.ps     #输出文件格式，如bands.ps
 /
 ```
 # 11.对称性问题
+参考：
 @https://pw-forum.pwscf.narkive.com/R4HBmxKk/error-in-routine-sym-rho-init-shell-lone-vector-with-fixed-fft-dimension
+报错：
 ```
 task #        39
      from sym_rho_init_shell : error #         2
      lone vector
 ```
+解释：与算法有关，只需要适当改小`ecutrh`
