@@ -22,4 +22,10 @@ cif2cell *.cif -p quantumn-espreeso
 ```
 cif2cell 222-nv_center-\[10-1\].cif -p quantum-espresso
 
+
 ```
+## k点并行计算可以调高计算速率
+参数有
+`-nk`,`-npool`,`-npools`，`-npool 3`
+记得一定要设成核数的整数倍，可以使K点均分，因此最好是偶数
+还有就是与Node数等同
