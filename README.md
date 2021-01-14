@@ -29,3 +29,6 @@ cif2cell 222-nv_center-\[10-1\].cif -p quantum-espresso
 `-nk`,`-npool`,`-npools`，`-npool 3`
 记得一定要设成核数的整数倍，可以使K点均分，因此最好是偶数
 还有就是与Node数等同
+
+## vesta 不显示小黑框
+Objects > Properties > General > do not show
