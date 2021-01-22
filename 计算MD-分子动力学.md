@@ -87,6 +87,8 @@ ion_dynamics='verlet'
 ###  四.分子动力学系综的选择---NVE,NVT,NPT
 @https://www.charmm.org/ubbthreads/ubbthreads.php?ubb=showflat&Number=11071
 @https://en.wikipedia.org/wiki/Molecular_dynamics#Microcanonical_ensemble_(NVE)
+
+
 上述三者表示正则统计系综，暗示着变量守恒或者变化。N表示粒子数守恒
 ###### NVE---微正则系综
 对应无热交换的过程，其分子动力学轨迹可以看作是势能和动能的交换，总能量是守恒的
