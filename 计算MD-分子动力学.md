@@ -84,6 +84,8 @@ ion_dynamics='verlet'
 `nstep` 整数，默认：
 当calculation='scf','nscf','bands' 默认值为1
 当calculation为其他，默认值为50
+### nstep 在TDPW中可以续算，不用担心
+如果看电子吸收谱，分辨率为0.1eV时， nstep*dt > 40fs. 看THz光谱 nstep * dt > 3ps
 
 ###  四.分子动力学系综的选择---NVE,NVT,NPT
 @https://www.charmm.org/ubbthreads/ubbthreads.php?ubb=showflat&Number=11071
@@ -100,3 +102,7 @@ constant number (N), volume (V), and temperature (T); T is regulated via a therm
 ###### NPT---除了恒温器外，还需要一个恒压器。
 烧瓶在环境温度和压力下均可打开，最适合实验室条件同上
 as for NVT, but pressure (P) is regulated
+##### NVE完全孤立，体系类似平衡位置震荡
+##### 你可以不开SOC，不开自旋跑MD， 然后把结构提出来做scf计算，这样即节约计算量又才样丰富
+##### :
+跑MD的精度，k点之类的都可以降低，只是为了采样构型，不用算的那么精确后期算磁性时需要精确
