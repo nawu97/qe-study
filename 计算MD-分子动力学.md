@@ -88,10 +88,12 @@ ion_dynamics='verlet'
 @https://www.charmm.org/ubbthreads/ubbthreads.php?ubb=showflat&Number=11071
 @https://en.wikipedia.org/wiki/Molecular_dynamics#Microcanonical_ensemble_(NVE)
 上述三者表示正则统计系综，暗示着变量守恒或者变化。N表示粒子数守恒
-NVE---微正则系综，对应无热交换的过程，其分子动力学轨迹可以看作是势能和动能的交换，总能量是守恒的
+###### NVE---微正则系综
+对应无热交换的过程，其分子动力学轨迹可以看作是势能和动能的交换，总能量是守恒的
 粒子数（N）,体积（V）,能量（E）以及动能（KE）与势能(PE)之和守恒 :constant number (N), volume (V), and energy (E); the sum of kinetic (KE) and potential energy (PE) is conserved, T and P are unregulated 
-NVT---正则系综，也称为恒温分子动力学（CTMD）。在NVT中，吸热和放热过程的能量与恒温器进行交换。粒子数（N）,体积（V），温度（T）守恒,通过一个热容器向守恒的哈密顿量中加入一个自由度，P不受约束
+###### NVT---正则系综
+也称为恒温分子动力学（CTMD）。在NVT中，吸热和放热过程的能量与恒温器进行交换。粒子数（N）,体积（V），温度（T）守恒,通过一个热容器向守恒的哈密顿量中加入一个自由度，P不受约束
 constant number (N), volume (V), and temperature (T); T is regulated via a thermostat, which typically adds a degree of freedom to the conserved Hamiltonian;  P is unregulated
-NPT---除了恒温器外，还需要一个恒压器。
+###### NPT---除了恒温器外，还需要一个恒压器。
 烧瓶在环境温度和压力下均可打开，最适合实验室条件同上
 as for NVT, but pressure (P) is regulated
