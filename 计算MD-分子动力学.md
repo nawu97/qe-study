@@ -6,11 +6,11 @@
 
 
 ###  二.相关参数
-#### `tstress`默认`.false.` 
+#### 1.`tstress`默认`.false.` 
 计算stress (如果`calculation='vc-md'`或者`calculation='vc-relax'`,该参数会自动设置为.true.)
-#### `tprnfor` 计算forces 
+#### 2.`tprnfor` 计算forces 
 (如果`calculation='vc-md'`或者`calculation='relax'`或者`calculation='md'`,该参数会自动设置为.true.)
-#### `nosym`默认`.false.` 
+#### 3.`nosym`默认`.false.` 
 如果对称性没有应用（.true.）,
 ①在输入中提供k点的列表：则按“原样”使用它：不生成对称不等价的k点，并且电荷密度不对称
 ②在输入中提供均匀的k点网格，扩展到整个布里渊区，而与晶体的对称性无关。如果考虑时间反演对称性，除非指定noinv=.true.，否则k与-k可视为等价处理
@@ -20,9 +20,60 @@
 ②在分子动力学模拟
 ③计算孤立原子
 
-#### `nosym` 字符串
+#### 4.`nosym` 字符串
 可供选择有：
 'atomic'  原子电荷叠加的起始势（默认：scf,relax,md）
 'file'   从变量prefix和outdir指定的目录中的现有“ charge-density.xml”文件开始。对于nscf和band计算，这是默认设置，也是唯一可行的选择
 
-####
+#### 5.针对&IONS
+如果计算`calculation='relax'`，`'md'`，`'vc-relax'`或`'vc-md'`则必需计算`calculation='scf'`的可选选项（仅使用ion_positions）
+##### ion_dynamics 字符串----用于指定不同类型的离子动力学
+下面是不同类型的动力学可能性与规则:
+当calculation='relax'
+    'bfgs' （默认）基于trust radius过程，使用BFGS拟牛顿算法进行结构弛豫
+    'damp'  使用阻尼（快速最小Verlet）动力学进行结构弛豫
+当calculation='md'
+    'verlet' (默认)使用Verlet算法对牛顿方程进行积分
+    'langevin'  离子动力学过度阻尼langevin
+    'langevin-smc'   
+当calculation='vc-relax'
+     'bfgs' (默认) 使用bfgs准牛顿算法
+     'damp' 使用阻尼（贝曼）动力学进行结构弛豫
+当calculation='vc-md'
+      'beeman' （默认）使用贝曼动力学进行结构弛豫
+      
+##### ion_temperature 字符串，默认：'not_controlled'
+可供选择有：
+'rescaling' 通过速度缩放（第一种方法）控制离子温度，请参见参数tempw，tolp和nraise（仅适用于VC-MD）。
+这种重新缩放方法是VC-MD当前唯一实现的方法
+'rescale-v' 通过速度缩放控制离子温度
+'rescale-T'
+'reduce-T'
+'berendsen' 使用“软”速度控制离子温度
+'andersen' 使用Andersen恒温器控制离子温度
+'svr' 使用参数tempw和nraise使用随机速度重新缩放控制离子温度
+'initial' 将离子速度初始化为温度温度，然后继续不受控制
+'not_controlled' 默认，离子温度不受控制
+
+##### tempw 实数，默认：300D.0
+对于大多数恒温器MD运行开始时的温度
+
+
+#### 6.针对&CELL
+
+###  三.分子动力学
+```
+&CONTROL
+calculation='md'
+nstep=68
+dt=4
+/
+&IONS
+!tempw起始温度
+tempw=0.1
+!系综，verlet(NVE)
+ion_dynamics='verlet'
+/
+&CELL
+/
+```
