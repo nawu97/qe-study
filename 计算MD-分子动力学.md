@@ -1,11 +1,11 @@
 # 计算分子动力学
 ## qe中分子动力学的计算
-### 关于设置
+### 一.关于设置
 `calculation='md'`表示的是 分子动力学，将电子对离子的作用看成离子感受到的势，根据势能和离子出事的速度求解离子运动的牛顿方程
 `calculation='vc-md'`表示的是 改变cell的分子动力学
 
 
-### 相关参数
+###  二.相关参数
 #### `tstress`默认`.false.` 
 计算stress (如果`calculation='vc-md'`或者`calculation='vc-relax'`,该参数会自动设置为.true.)
 #### `tprnfor` 计算forces 
