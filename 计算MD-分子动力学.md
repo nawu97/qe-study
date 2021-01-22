@@ -77,3 +77,12 @@ ion_dynamics='verlet'
 &CELL
 /
 ```
+`dt`实数，默认20.D0 
+分子动力学的时间步长（以Rydberg原子单位表示）（1 a.u. = 4.8378 * 10 ^ -17 s：请注意，CP代码使用Hartree原子单位，仅为后者的一半！）
+
+`nstep` 整数，默认：
+当calculation='scf','nscf','bands' 默认值为1
+当calculation为其他，默认值为50
+
+
+ 
