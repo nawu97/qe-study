@@ -126,6 +126,14 @@ constant number (N), volume (V), and temperature (T); T is regulated via a therm
 as for NVT, but pressure (P) is regulated
 ###### 注意事项：
  ①NVE完全孤立，体系类似平衡位置震荡
+ 
+ 
  ②你可以不开SOC，不开自旋跑MD， 然后把结构提出来做scf计算，这样即节约计算量又才样丰富
+ 
+ 
  ③跑MD的精度，k点之类的都可以降低，只是为了采样构型，不用算的那么精确后期算磁性时需要精确
+ 
+ 
  ④可以看下体系的能量变化，取能量低的点结构
+ 
+ 
