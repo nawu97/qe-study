@@ -50,13 +50,35 @@
 'rescale-T'
 'reduce-T'
 'berendsen' 使用“软”速度控制离子温度
-'andersen' 使用Andersen恒温器控制离子温度
+'andersen' 使用Andersen恒温器控制离子温度(NVT,师兄常用)
 'svr' 使用参数tempw和nraise使用随机速度重新缩放控制离子温度
-'initial' 将离子速度初始化为温度温度，然后继续不受控制
-'not_controlled' 默认，离子温度不受控制
+'initial' 将离子速度初始化为温度温度，然后继续不受控制（NVE）
+'not_controlled' 默认，离子温度不受控制(NVE)
 
-##### tempw 实数，默认：300D.0
+##### tempw 实数，默认：300.D0
 对于大多数恒温器MD运行开始时的温度
+
+##### tolp 实数，默认：100.D0
+速度缩放的公差。
+如果运行平均温度和目标温度的差异大于tolp，则重新调整速度
+
+##### delta_t 实数，默认：1.D0
+如果`ion_temperature == 'rescale-T'` 在每个步骤中，瞬时温度乘以delta_t，完成所有速度的缩放。
+如果`ion_temperature =='reduce-T'`每'nraise'一步，瞬时温度降低-delta_t（即delta_t <0加到T）
+
+瞬时温度是在每次离子移动结束和重新定标之前计算，输出中报告的温度
+
+对于delta<0，加热或冷却的实际平均比例粗略的应该是 C*delta_t/(nraise*dt)
+（对于理想气体，C = 1，对于谐波固体，所有二次自由度之间的能量均分定理，C = 0.5）
+
+##### nraise 整数，默认：1
+如果`ion_temperature =='reduce-T'`：每上升一步，瞬时温度就降低-delta_t（即将delta_t加到温度上）
+···
+
+##### refold_pos 默认：.false.
+仅适用于分子动力学或阻尼动力学。
+如果为.true.,将离子重新折叠到超胞中
+
 
 
 #### 6.针对&CELL
