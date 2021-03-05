@@ -32,3 +32,9 @@ cif2cell 222-nv_center-\[10-1\].cif -p quantum-espresso
 
 ## vesta 不显示小黑框
 Objects > Properties > General > do not show
+
+
+## 增加SOC
+1）赝势的选择：选择带有rel的
+2）对称性
+3）
