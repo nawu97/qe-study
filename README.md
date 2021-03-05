@@ -35,7 +35,8 @@ Objects > Properties > General > do not show
 
 
 ## 增加SOC
-1）赝势的选择：选择带有rel的
+1）赝势的选择：选择带有rel的赝势
+
 2）对称性
 关于对称性，有关的参数包括``
 ```
