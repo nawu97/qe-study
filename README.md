@@ -37,4 +37,10 @@ Objects > Properties > General > do not show
 ## 增加SOC
 1）赝势的选择：选择带有rel的
 2）对称性
-3）
+3）&SYSTEM里的参数
+```
+lspinorb	LOGICAL
+if .TRUE. the noncollinear code can use a pseudopotential with
+spin-orbit.
+```
+将lspinorb设置成true，非线性过程开始计算SOC的情况
