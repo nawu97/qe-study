@@ -735,5 +735,8 @@ Default:	.false.
 
 ```
 方法：
-增加 ecutwfc
-减小 conv_thr
+1）增加 ecutwfc
+
+2）减小 conv_thr
+
+或者同时改变
