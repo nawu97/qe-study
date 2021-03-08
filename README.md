@@ -60,3 +60,5 @@ spin-orbit.
 If you use 'vc-relax', you are simulating the effect of periodic defects on the lattice constants of the entire crystal, as well as on the local atomic positions of the atoms. On the other hand, 'relax' implies that the lattice constants are fixed to the values set by the rest of the crystal (implying that the rest of the crystal is more or less defect-free). Performing vc-relax with and without a defect will also give you information about the effect of the defect on the lattice constant.
 
 解释：如果是周期性的晶胞，弛豫改变通常要用'vc-relax'；如果是'relax'通常是指固定晶格常数
+
+## 参考@https://zhuanlan.zhihu.com/p/84789491
