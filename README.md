@@ -62,3 +62,12 @@ If you use 'vc-relax', you are simulating the effect of periodic defects on the 
 解释：如果是周期性的晶胞，弛豫改变通常要用'vc-relax'；如果是'relax'通常是指固定晶格常数
 
 ## 参考@https://zhuanlan.zhihu.com/p/84789491
+
+
+## 高对称点的寻找
+1）materials cloud @https://www.materialscloud.org/work/tools/seekpath
+2) vaspkit (huairou 集群)
+3) 文献 @https://www.sciencedirect.com/science/article/pii/S0927025610002697
+4) aflow寻找
+
+
