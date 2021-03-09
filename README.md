@@ -77,6 +77,7 @@ If you use 'vc-relax', you are simulating the effect of periodic defects on the 
 4) aflow
 
 ### 格式：
+```
 K_POINTS {crystal}
 8
    0.0000000000     0.0000000000     0.0000000000     40
@@ -87,5 +88,5 @@ K_POINTS {crystal}
    0.0000000000     0.5000000000     0.0000000000     40
    0.5000000000     0.5000000000     0.0000000000     40
    0.5000000000     0.4933333333     0.4933333333     40
-
+```
 
