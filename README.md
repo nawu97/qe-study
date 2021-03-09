@@ -66,8 +66,14 @@ If you use 'vc-relax', you are simulating the effect of periodic defects on the 
 
 ## 高对称点的寻找
 1）materials cloud @https://www.materialscloud.org/work/tools/seekpath
+
+
 2) vaspkit (huairou 集群)
+
+
 3) 文献 @https://www.sciencedirect.com/science/article/pii/S0927025610002697
-4) aflow寻找
+
+
+4) aflow
 
 
