@@ -1,8 +1,8 @@
 
-<img width="727" alt="能带图" src="https://user-images.githubusercontent.com/76439954/110729170-2a669c00-8259-11eb-91d7-ca720ad1aece.PNG">
+
 # 计算MoS2的能带
 基本步骤： 弛豫计算==>自洽计算==>非自洽计算==>能带计算
-
+<img width="727" alt="能带图" src="https://user-images.githubusercontent.com/76439954/110729170-2a669c00-8259-11eb-91d7-ca720ad1aece.PNG">
 
 ## 自洽计算
 关于MoS2的自洽计算，输入文件如下：
