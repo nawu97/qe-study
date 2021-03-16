@@ -1,8 +1,7 @@
 # Bandup 使用准则
 ## 一.安装
 ### 1.下载安装anaconda2
-#### 1)下载：国内用户可以到Anaconda清华镜像网站下载：
-       @ https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
+#### 1)下载：国内用户可以到Anaconda清华镜像网站下载：@https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
        
        选择Anaconda2-...-linux-X86_64.sh
 #### 2)安装： sh Anaconda2-X.X.X-Linux-x86_64.sh
