@@ -187,4 +187,5 @@ module load compiler/intel/intel-compiler-2019u3
 module load mpi/intelmpi/2017.4.239
 ```
 也就是在使用时
-configure的时候记得加上这个指令：-D__OLDXML或者改make.inc，其中DFLAGS = -D__DFTI -D__MPI -D__OLDXML，然后make pw
+configure的时候记得加上这个指令：
+`-D__OLDXML`或者改`make.inc`，其中`DFLAGS = -D__DFTI -D__MPI -D__OLDXML`，然后`make pw`
