@@ -196,3 +196,28 @@ configure的时候记得加上这个指令：
 ### 一定要注意 `-D__OLDXML`中间是__（两个下划横线）不是_（一个下划横线）！
 
 ### 2.问题2:验证例子千万不要用ex1
+
+### 2.问题3:相关module
+怀柔在用的时候，默认：
+```
+Currently Loaded Modules:
+  1) autotools   2) prun/1.3   3) gnu8/8.3.0   4) openmpi3/3.1.4   5) ohpc
+```
+在利用bandup时候要利用fortran编译
+在利用qe6.4要
+```
+module unload gnu8/8.3.0
+module unload openmpi3/3.1.4
+module load parallel_studio/2020.2.254
+module load intelmpi/2020.2.254
+```
+
+松山湖在用的时候，默认：
+
+在利用qe6.4要
+```
+module load intel/19.1.2.254
+module load intelmpi/2020.2.254
+```
+#### 要熟悉编译器！
+
