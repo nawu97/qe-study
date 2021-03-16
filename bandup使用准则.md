@@ -177,8 +177,8 @@ mpirun $pwscf -input graphene_rect_SC_pwscf_bands.in > pwscf_bands.out
 ## 三.注意事项
 ### 1.问题1:显示无法打开xml文件，如下图所示
 <img width="926" alt="26fe4553f907e04a7a74d2b555199eb" src="https://user-images.githubusercontent.com/76439954/111239652-8f910780-8634-11eb-9333-de2667dea408.png">
-#### 原因：
+#### 1) 原因：
 qe从6.4之后就不支持老版本的波函数和xml文件输出了而bandup不识别新的输出格式
-#### 解决方法：重装了qe6.4，改了一下源码，第三步用qe6.4来做，也就是说第一步利用qe6.6产生，第三步利用qe6.4产生，注意处理器的选择![273808575174326776](https://user-images.githubusercontent.com/76439954/111239952-3b3a5780-8635-11eb-8002-2c8df0163d86.png)
+#### 2)解决方法：重装了qe6.4，改了一下源码，第三步用qe6.4来做，也就是说第一步利用qe6.6产生，第三步利用qe6.4产生，注意处理器的选择![273808575174326776](https://user-images.githubusercontent.com/76439954/111239952-3b3a5780-8635-11eb-8002-2c8df0163d86.png)
 也就是在使用时
 configure的时候记得加上这个指令：-D__OLDXML或者改make.inc，其中DFLAGS = -D__DFTI -D__MPI -D__OLDXML，然后make pw
