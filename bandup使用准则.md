@@ -18,6 +18,8 @@
 
 ## 二.基本使用方法
 ### 以bandup/tutorial/Quantum-espresso/example_2_bulk_Si来研究
+
+
 ### 切记 不要使用example_1_graphene_rectangular_SC！！！（这个tutorial有问题，大坑！）
 
 #### Step1.得到收敛的电荷密度
