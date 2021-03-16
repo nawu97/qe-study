@@ -17,14 +17,16 @@
 
 
 ## 二.基本使用方法
-### 以bandup/tutorial/Quantum-espresso/example_1_graphene_rectangular_SC来研究
+### 以bandup/tutorial/Quantum-espresso/example_2_bulk_Si来研究
+### 切记 不要使用example_1_graphene_rectangular_SC！！！（这个tutorial有问题，大坑！）
+
 #### Step1.得到收敛的电荷密度
 基本做法： 准备一个输入文件*scf.in*和一个提交任务的脚本（重新修饰；提交任务）
 提交任务的脚本（适合于怀柔服务器的脚本）如下：
 ```
 #!/bin/bash
 #SBATCH --nodes 1 
-#SBATCH -J Graphene_SC
+#SBATCH -J Si
 #SBATCH -t 1-00:00:00
 #SBATCH -p regular
 
@@ -41,9 +43,11 @@ export ESPRESSO_TMPDIR="./outdir"
 # Modify this to point to your pseudopotential folder
 export ESPRESSO_PSEUDO=`pwd`/'../../upf_files'
 
-mpirun $pwscf -input graphene_rect_SC_pwscf.in > pwscf.out
+mpirun $pwscf -input bulk_Si_pwscf.in > pwscf.out
 
 #End of script
+
+
 ```
 这样便可以得到一系列自洽的波函数于`/outdir`文件中
 
@@ -52,91 +56,56 @@ mpirun $pwscf -input graphene_rect_SC_pwscf.in > pwscf.out
 ##### 2）文件内容：
 ###### primtivecell lattice.in(包含原胞的晶格信息)
 ```
-C ! Graphene primitive cell                                                                  
-   2.467000000
-   0.866025403  -0.500000000   0.000000000
-   0.866025403   0.500000000   0.000000000
-   0.000000000   0.000000000   6.080259424 # If this is the last line (or if the next line is blank), then BandUP ignores the positions of the atoms.
-  2
-Selective Dynamics  
-Cartesian 
-   0.288675135   0.000000000   3.040129712  F  F  F
-   1.443375672   0.000000000   3.040129712  F  F  F
+Si ! Bulk Si, primitive cell vectors (diamond structure)
+   5.430000000
+   0.000000000   0.500000000   0.500000000
+   0.500000000   0.000000000   0.500000000
+   0.500000000   0.500000000   0.000000000
 
 ```
 ###### supercell lattice.in（包含超胞的晶格信息）
 ```
- C ! Graphene - Zigzag                                                          
-   2.467000000
-   3.464101614   0.000000000   0.000000000
-   0.000000000   3.000000000   0.000000000
-   0.000000000   0.000000000   6.080259424 # If this is the last line (or if the next line is blank), then BandUP ignores the positions of the atoms.
-  C
-  24
-Selective Dynamics  
-Cartesian 
-   0.288675133   0.500000000   3.040129712  F  F  F
-   0.577350267   0.000000000   3.040129712  F  F  F
-   1.154700536   0.000000000   3.040129712  F  F  F
-   1.443375670   0.500000000   3.040129712  F  F  F
-   2.020725940   0.500000000   3.040129712  F  F  F
-   2.309401074   0.000000000   3.040129712  F  F  F
-   2.886751343   0.000000000   3.040129712  F  F  F
-   3.175426477   0.500000000   3.040129712  F  F  F
-   0.288675133   1.500000000   3.040129712  F  F  F
-   0.577350267   1.000000000   3.040129712  F  F  F
-   1.154700536   1.000000000   3.040129712  F  F  F
-   1.443375670   1.500000000   3.040129712  F  F  F
-   2.020725940   1.500000000   3.040129712  F  F  F
-   2.309401074   1.000000000   3.040129712  F  F  F
-   2.886751343   1.000000000   3.040129712  F  F  F
-   3.175426477   1.500000000   3.040129712  F  F  F
-   0.288675133   2.500000000   3.040129712  F  F  F
-   0.577350267   2.000000000   3.040129712  F  F  F
-   1.154700536   2.000000000   3.040129712  F  F  F
-   1.443375670   2.500000000   3.040129712  F  F  F
-   2.020725940   2.500000000   3.040129712  F  F  F
-   2.309401074   2.000000000   3.040129712  F  F  F
-   2.886751343   2.000000000   3.040129712  F  F  F
-   3.175426477   2.500000000   3.040129712  F  F  F
+ Si ! Bulk Si, SC vectors                                                                    
+   5.430000000
+   1.000000000   0.000000000   0.000000000
+   0.000000000   1.000000000   0.000000000
+   0.000000000   0.000000000   1.000000000
 
 ```
 ###### KPOINTS_primitive cell.in（包含primitive cell的高对称路径）
 ```
-K-points along the directions K1-Gamma, Gamma-M1, M1-K1
- 25 25 13
-Line-mode 0.000000000
+Kpoints along some high symmetry directions on the pcbz of Si (diamond structure)
+23 27 9 29
+Line-mode
 Reciprocal
-   0.333333333  0.666666667  0.000000000    1 ! K
-   0.000000000  0.000000000  0.000000000    1 ! Gamma
+0.500 0.500 0.500   1  ! L
+0.000 0.000 0.000   1  ! G
 
-   0.000000000  0.000000000  0.000000000    1 ! Gamma
-   0.500000000  0.500000000  0.000000000    1 ! M
+0.000 0.000 0.000   1  ! G
+0.500 0.000 0.500   1  ! X
 
-   0.500000000  0.500000000  0.000000000    1 ! M
-   0.333333333  0.666666667  0.000000000    1 ! K
+0.500 0.000 0.500   1  ! X
+0.625 0.250 0.625   1  ! U
+
+0.375 0.375 0.750   1  ! K
+0.000 0.000 0.000   1  ! G
 
 ```
 ###### 提交任务的脚本如下：
 ```
 #!/bin/bash
 
+
 exe="bandup"
-
 task='kpts-sc-get'
-
 task_args=''
 
-# Command that will be run. The syntax is always this. 
 command_to_run="${exe} ${task} ${task_args}"
 
-# Running BandUP with the task and task-specific options requested
 eval $command_to_run
 
-# End of script
-
 ```
-执行上述脚本`./sh`进一步可以得到原胞到超胞产生的超胞k点路径
+执行上述脚本进一步可以得到原胞到超胞产生的超胞k点路径
 #### Step3.得到用于反折叠的超胞波函数
 
 ##### 基于上一部分得到的超胞的k点来计算对应的超胞的波函数，也就是在step2得到的k点的基础上进行超胞的自洽计算
@@ -166,13 +135,48 @@ export ESPRESSO_TMPDIR="outdir"
 export ESPRESSO_PSEUDO=`pwd`/'../../upf_files'
 
 ln -s ../step_1_get_converged_charge_density/${ESPRESSO_TMPDIR} .
-mpirun $pwscf -input graphene_rect_SC_pwscf_bands.in > pwscf_bands.out
+mpirun $pwscf -input bulk_Si_pwscf_bands.in > pwscf_bands.out
 
 #End of script
 
 ```
 #### Step4.执行Bandup并且画图
+基本做法： 准备.sh文件
+#!/bin/bash
+```
 
+# BandUP可以自己从自洽结果中得到费米能的数值，如果没办法得到，可以手动设置"-efermi VALUE_IN_eV"
+unfolding_task_args="-qe -prefix bulk_Si_exmpl2_BandUP -outdir ../step_3*/outdir"
+unfolding_task_args="${unfolding_task_args} -emin -13 -emax 6 -dE 0.050"
+plot_task_args='-input_file unfolded_EBS_symmetry-averaged.dat --show --save'
+plot_task_args="${plot_task_args} -plotdir plot --round_cb 0"
+
+# Choose OMP_NUM_THREADS=1 if you do not want openmp parallelization. 
+# I normally use OMP_NUM_THREADS=n_cores/2
+export OMP_NUM_THREADS=2
+
+exe="bandup"
+
+# Preparing to run BandUP's "unfold" task
+task='unfold'
+task_args=${unfolding_task_args}
+command_to_run="${exe} ${task} ${task_args}"
+# Running BandUP with the task and task-specific options requested
+ulimit -s unlimited
+eval $command_to_run
+
+# Preparing to run BandUP's "plot" task
+task='plot'
+task_args=${plot_task_args}
+command_to_run="${exe} ${task} ${task_args}"
+# Running BandUP with the task and task-specific options requested
+eval $command_to_run
+
+# End of script
+
+```
+最后，如果输出这样的内容证明，完成BANDUP能带反折叠的基本功能
+<img width="521" alt="捕获" src="https://user-images.githubusercontent.com/76439954/111279965-212a5600-85f0-11eb-9c8c-aea66816173e.PNG">
 
 ## 三.注意事项
 ### 1.问题1:显示无法打开xml文件，如下图所示
@@ -189,3 +193,6 @@ module load mpi/intelmpi/2017.4.239
 也就是在使用时
 configure的时候记得加上这个指令：
 `-D__OLDXML`或者改`make.inc`，其中`DFLAGS = -D__DFTI -D__MPI -D__OLDXML`，然后`make pw`
+### 一定要注意 `-D__OLDXML`中间是__（两个下划横线）不是_（一个下划横线）！
+
+### 2.问题2:验证例子千万不要用ex1
