@@ -22,7 +22,7 @@
 
 ### 切记 不要使用example_1_graphene_rectangular_SC！！！（这个tutorial有问题，大坑！）
 
-#### Step1.得到收敛的电荷密度
+#### Step1.得到收敛的电荷密度step_1_get_converged_charge_density
 基本做法： 准备一个输入文件*scf.in*和一个提交任务的脚本（重新修饰；提交任务）
 提交任务的脚本（适合于怀柔服务器的脚本）如下：
 ```
@@ -53,7 +53,7 @@ mpirun $pwscf -input bulk_Si_pwscf.in > pwscf.out
 ```
 这样便可以得到一系列自洽的波函数于`/outdir`文件中
 
-#### Step2.得到用于超胞能带结构计算的k点
+#### Step2.得到用于超胞能带结构计算的k点step_2_get_kpts_to_be_used_in_the_SC_band_struc_calcs
 ##### 1）基本做法： 准备三个文件：primtivecell lattice.in(包含原胞的晶格信息)，supercell lattice.in（包含超胞的晶格信息）,KPOINTS_primitive cell.in（包含primitive cell的高对称路径）
 ##### 2）文件内容：
 ###### primtivecell lattice.in(包含原胞的晶格信息)
@@ -108,7 +108,7 @@ eval $command_to_run
 
 ```
 执行上述脚本进一步可以得到原胞到超胞产生的超胞k点路径
-#### Step3.得到用于反折叠的超胞波函数
+#### Step3.得到用于反折叠的超胞波函数step_3_get_SC_wavefunctions_to_be_used_for_unfolding
 
 ##### 基于上一部分得到的超胞的k点来计算对应的超胞的波函数，也就是在step2得到的k点的基础上进行超胞的自洽计算
 ##### 1）基本做法： 准备三个文件：supercell.in(包含超胞的晶格信息，这时候K点也对应的是超胞的k点)与提交任务的脚本
@@ -142,7 +142,7 @@ mpirun $pwscf -input bulk_Si_pwscf_bands.in > pwscf_bands.out
 #End of script
 
 ```
-#### Step4.执行Bandup并且画图
+#### Step4.执行Bandup并且画图step_4_run_BandUP_and_plot
 基本做法： 准备.sh文件
 #!/bin/bash
 ```
