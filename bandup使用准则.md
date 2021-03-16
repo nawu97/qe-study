@@ -21,7 +21,12 @@
 
 
 ### 切记 不要使用example_1_graphene_rectangular_SC！！！（这个tutorial有问题，大坑！）
-
+```
+mkdir step_1_get_converged_charge_density
+mkdir step_2_get_kpts_to_be_used_in_the_SC_band_struc_calcs
+mkdir step_3_get_SC_wavefunctions_to_be_used_for_unfolding
+mkdir step_4_run_BandUP_and_plot
+```
 #### Step1.得到收敛的电荷密度step_1_get_converged_charge_density
 基本做法： 准备一个输入文件*scf.in*和一个提交任务的脚本（重新修饰；提交任务）
 提交任务的脚本（适合于怀柔服务器的脚本）如下：
