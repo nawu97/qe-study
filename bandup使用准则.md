@@ -204,7 +204,7 @@ configure的时候记得加上这个指令：
 
 ### 2.问题2:验证例子千万不要用ex1
 
-### 2.问题3:相关module
+### 3.问题3:相关module
 怀柔在用的时候，默认：
 ```
 Currently Loaded Modules:
@@ -228,3 +228,27 @@ module load intelmpi/2020.2.254
 ```
 #### 要熟悉编译器！
 
+
+
+### 4.问题4:
+报错如下：
+```
+Unfolding starts now.
+
+Reading plane-wave coefficients for SC-Kpoint K(1)...
+    * Done in .1s.
+
+Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
+
+Backtrace for this error:
+#0  0x2b846dcf73ff in ???
+#1  0x426d34 in ???
+#2  0x403689 in ???
+#3  0x402d7c in ???
+#4  0x2b846dce3554 in ???
+#5  0x402dac in ???
+#6  0xffffffffffffffff in ???
+
+```
+可能改善的做法是：
+调节那个-emin -emax -dE可以避免
