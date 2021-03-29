@@ -749,4 +749,20 @@ Default:	.false.
      fixed occupations and lsda need tot_magnetization
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  ```
- 解决方法：
+ 解决方法：设置
+ ```
+  starting_magnetization(1)=0.1
+  starting_magnetization(2)=0
+  tot_magnetization=0.1
+```
+ 
+# 18.
+```
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+calculation='md',electron_dynamics='bfgs' can not support
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 错误原因：
+ 如果用md计算就不可以用'bfgs'算法，原因是，bfgs算法用于弛豫
+```
+<img width="575" alt="解释" src="https://user-images.githubusercontent.com/76439954/112851476-96605580-90dd-11eb-9c44-64d50603698a.PNG">
+所以可以不选择具体的某种算法，采用默认的比较稳妥！
