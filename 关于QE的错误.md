@@ -766,3 +766,23 @@ calculation='md',electron_dynamics='bfgs' can not support
 ```
 <img width="575" alt="解释" src="https://user-images.githubusercontent.com/76439954/112851476-96605580-90dd-11eb-9c44-64d50603698a.PNG">
 所以可以不选择具体的某种算法，采用默认的比较稳妥！
+
+# 19
+```
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     task #        10
+     from  iosys  : error #         3
+      wrong LABEL in ION_VELOCITIES
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+```
+记得只要是改了ATOMIC SPEICES中原子名称的，一定要更改`&SYSTEM`中`ntyp`的数量
+```
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     task #        16
+     from  card_atomic_species  : error #         3
+      two occurrences of the same atomic label
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+```
+注意标签atomic label一定要不同
