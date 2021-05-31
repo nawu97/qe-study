@@ -786,3 +786,11 @@ calculation='md',electron_dynamics='bfgs' can not support
 
 ```
 注意标签atomic label一定要不同
+# 19.
+```
+(base) [nawu@login01 MoS2-ES-high-linear-PHONON]$ grep "TDPW: total magnetization       = " pw.MoS2.scf-
+Binary file pw.MoS2.scf-SOC.out matches
+```
+<img width="594" alt="grep" src="https://user-images.githubusercontent.com/76439954/120152015-8b31bf00-c21f-11eb-9027-47408ef978f9.png">
+原因：
+这主要是因为`*.out`文件太大了，使得`grep`读取时当作二进制文件了，所以可以加一个`-a`识别读取
