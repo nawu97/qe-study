@@ -794,3 +794,76 @@ Binary file pw.MoS2.scf-SOC.out matches
 <img width="594" alt="grep" src="https://user-images.githubusercontent.com/76439954/120152015-8b31bf00-c21f-11eb-9027-47408ef978f9.png">
 原因：
 这主要是因为`*.out`文件太大了，使得`grep`读取时当作二进制文件了，所以可以加一个`-a`识别读取
+
+# 20.
+```
+&CONTROL
+ calculation='md',
+ restart_mode='from_scratch',
+ prefix='MoS2_scf',
+ pseudo_dir='./pseudo',
+ outdir='./tmp',
+ forc_conv_thr=1.0d-3
+ tddft_is_on=.True.
+ td_outputS=.True.
+ edt=15.0000
+ dt=15.0000
+ nstep=421
+ diagonSteps=1
+/
+&SYSTEM
+  ibrav = 0
+  A=3.19032
+  nat = 3
+  ntyp = 3
+  ecutwfc=70
+  nbnd=30
+  starting_magnetization(1)=0.1
+  starting_magnetization(2)=0
+  lspinorb=.TRUE.
+  nosym=.TRUE. 
+  noinv = .True.
+  noncolin=.TRUE.
+/
+&ELECTRONS
+   electron_maxstep=200
+   conv_thr=1.0d-6
+/
+&IONS
+/
+&CELL
+/
+CELL_PARAMETERS {alat}
+  1.000000000000000   0.000000000000000   0.000000000000000
+ -0.500000000000000   0.866025403784439   0.000000000000000
+  0.000000000000000   0.000000000000000   4.663803021124211
+ATOMIC_SPECIES
+   Mo   95.96000  Mo.rel-pz-spn-kjpaw_psl.0.2.UPF
+   S1    32.06750  S.rel-pz-n-kjpaw_psl.0.1.UPF
+   S2    32.06750  S.rel-pz-n-kjpaw_psl.0.1.UPF
+ATOMIC_POSITIONS {crystal}
+Mo   0.666666666666667   0.333333333333333   0.750000000000000
+S1   0.333333333333333   0.666666666666667   0.855174000000000
+S2   0.333333333333333   0.666666666666667   0.644826000000000
+K_POINTS {automatic}
+9 9 1 0 0 0
+
+```
+.out文件中出现了
+```
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+     Error in routine electrons (1):
+
+     charge is wrong: smearing is needed
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ ```
+ 改正方式：
+ 增加
+ ```
+ occupations='smearing'
+  smearing='gaussian'
+  degauss=0.001
+ ```
