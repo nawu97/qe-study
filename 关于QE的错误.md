@@ -861,9 +861,12 @@ K_POINTS {automatic}
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  ```
  改正方式：
+ ## 如果是第一个md出现的
  增加
  ```
  occupations='smearing'
   smearing='gaussian'
   degauss=0.001
  ```
+ ##  如果是第n个md出现的
+ 则要考虑edt和dt的大小，不要设的太长，文献里只有0.04最多不要超过8au
