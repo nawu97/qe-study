@@ -99,13 +99,17 @@ K_POINTS {crystal}
 
 
 ### 固定原子
+```
 ATOMIC_POSITIONS{alat  | bohr | angstrom | crystal | crystal_sg }
  X(1) 	 x(1) 	 y(1) 	 z(1) 	{	 if_pos(1)(1) 	 if_pos(2)(1) 	 if_pos(3)(1) 	}
  X(2) 	 x(2) 	 y(2) 	 z(2) 	{	 if_pos(1)(2) 	 if_pos(2)(2) 	 if_pos(3)(2) 	}
  . . .
  X(nat) 	 x(nat) 	 y(nat) 	 z(nat) 	{	 if_pos(1)(nat) 	 if_pos(2)(nat) 	 if_pos(3)(nat) 	}
+ ```
 #### 注意：
+```
 if_pos(1), if_pos(2), if_pos(3)	INTEGER
 Default:	1
+```
 如果改为 0 0 0 用于固定原子
 该原子的力的分量 i 乘以 if_pos(i)，它必须是 0 或 1。用于在 MD 动力学或结构优化运行中保持选定的原子和/或选定的组分固定。
