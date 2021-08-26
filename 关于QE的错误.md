@@ -916,3 +916,21 @@ K_POINTS {automatic}
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ```
+
+# 26
+```
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine phq_readin (1):
+     no elec. field with metals
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+```
+如果是一个金属的话，需要把epsli设置为true
+```
+epsil	LOGICAL
+Default:	.false.
+If .true. in a q=0 calculation for a non metal the
+macroscopic dielectric constant of the system is
+computed. Do not set epsil to .true. if you have a
+metallic system or q/=0: the code will complain and stop.
+```
