@@ -934,3 +934,20 @@ macroscopic dielectric constant of the system is
 computed. Do not set epsil to .true. if you have a
 metallic system or q/=0: the code will complain and stop.
 ```
+
+# 27
+```
+  Error in routine checkallsym (2):
+     not orthogonal operation
+
+```
+nosym=.true.
+# 28
+```
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine save_buffer (1200):
+     cannot write record
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+```
+改用新的tdpw目录：TDPW-new/tdpw.x
