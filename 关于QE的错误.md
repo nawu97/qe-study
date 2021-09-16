@@ -982,3 +982,9 @@ CELL PARAMETE不要用Angstrom为单位的
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ```
+cell optimization may occasionally break the starting symmetry of the cell. When this happens, the run is stopped because the number of k-points calculated for the starting configuration may no longer be suitable. Possible solutions:
+
+start with a nonsymmetric cell;
+
+use a symmetry-conserving algorithm: the Wentzcovitch algorithm (cell dynamics='damp-w') should not break the symmetry.
+@http://blog.sciencenet.cn/blog-567091-727591.html
