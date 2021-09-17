@@ -988,3 +988,12 @@ start with a nonsymmetric cell;
 
 use a symmetry-conserving algorithm: the Wentzcovitch algorithm (cell dynamics='damp-w') should not break the symmetry.
 @http://blog.sciencenet.cn/blog-567091-727591.html
+
+# 41
+```
+  Error in routine c_bands (1):
+     too many bands are not converged
+
+```
+参考：@http://www.democritos.it/pipermail/pw_forum/2011-September/022050.html
+1.增加截断能 2.提高收敛标准
