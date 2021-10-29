@@ -1007,3 +1007,36 @@ Fortran runtime error: End of file
 
 
 ```
+
+43.
+```
+ kpoint   3 ibnd  45 solve_linter: root not converged  1.038E+12
+     kpoint   4 ibnd  46 solve_linter: root not converged  1.732E+00
+     kpoint   5 ibnd  47 solve_linter: root not converged  1.933E-01
+     kpoint   6 ibnd  47 solve_linter: root not converged  4.361E-02
+     kpoint   7 ibnd  48 solve_linter: root not converged  1.686E+00
+     kpoint   8 ibnd  50 solve_linter: root not converged  5.759E-01
+     kpoint  11 ibnd  45 solve_linter: root not converged  1.702E+07
+     kpoint  12 ibnd  46 solve_linter: root not converged  1.733E+00
+     kpoint  13 ibnd  47 solve_linter: root not converged  2.072E-02
+     kpoint  14 ibnd  48 solve_linter: root not converged  1.361E+00
+     kpoint  15 ibnd  49 solve_linter: root not converged  2.396E+01
+     kpoint  16 ibnd  50 solve_linter: root not converged  1.547E-01
+     kpoint  17 ibnd  46 solve_linter: root not converged  5.653E-02
+     kpoint  18 ibnd  47 solve_linter: root not converged  2.964E-02
+     kpoint  19 ibnd  48 solve_linter: root not converged  1.639E+03
+     kpoint  20 ibnd  49 solve_linter: root not converged  3.720E-02
+     kpoint  21 ibnd  50 solve_linter: root not converged  2.491E+00
+     kpoint  23 ibnd  47 solve_linter: root not converged  4.567E-02
+     kpoint  24 ibnd  49 solve_linter: root not converged  7.848E+00
+     kpoint  25 ibnd  50 solve_linter: root not converged  1.411E+01
+     kpoint  27 ibnd  49 solve_linter: root not converged  4.114E+00
+     kpoint  29 ibnd  50 solve_linter: root not converged  2.487E-01
+     kpoint  30 ibnd  49 solve_linter: root not converged  1.253E-02
+     kpoint  32 ibnd  45 solve_linter: root not converged  7.133E+11
+     kpoint  33 ibnd  46 solve_linter: root not converged  4.859E+00
+
+```
+降低alpha_mixing=0.1调整nq mesh
+
+
