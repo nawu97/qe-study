@@ -997,3 +997,13 @@ use a symmetry-conserving algorithm: the Wentzcovitch algorithm (cell dynamics='
 ```
 参考：@http://www.democritos.it/pipermail/pw_forum/2011-September/022050.html
 1.增加截断能 2.提高收敛标准
+
+
+42.
+```
+Error termination. Backtrace:
+At line 60 of file lambda.f90 (unit = 5, file = 'stdin')
+Fortran runtime error: End of file
+
+
+```
