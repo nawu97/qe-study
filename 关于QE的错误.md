@@ -26,7 +26,21 @@
  ```forc_conv_thr=1.0d-5```写成了 ```force_conv_thr=1.0d-5```
  
  ## 注意关键词啊！
- 
+ ```
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine pw2wannier90 (1):
+     reading inputpp namelist
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ ```
+ ## 原因：提交任务的脚本里少了识别文件参数 -i 所导致的，即
+ ```
+ srun --mpi=pmi2   $EXEC   silicon.pw2wan | tee silicon.pw2wan.out
+ ```
+正确的应该是
+```
+srun --mpi=pmi2   $EXEC -i  silicon.pw2wan | tee silicon.pw2wan.out
+```
  
  ## 报错B：
 
