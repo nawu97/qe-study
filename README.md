@@ -155,7 +155,7 @@ while [ $HOSTNAME == login01 ]; do echo -n "   "; sleep 20 ; done &
 ```
 outdir='./'   #输出文件的目录
 wfcdir 同outdir
-restart_mode='restart'
+restart_mode='restart' #一般不要restart直接非自洽计算就行
 startingwfc='file' #由prefix和outdir指定的目录包含着开始演化的波函数
 startingpot='file' #从charge-density.xml文件开始读取势场
 ```
