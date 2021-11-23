@@ -143,3 +143,19 @@ while [ $HOSTNAME == login01 ]; do echo -n "   "; sleep 20 ; done &
 服务器判断用户长时间没反应自动掉线了执行
 
 ###把你作业脚本最前面加上sleep 10000000让这个节点一直空跑，你再交作业不就避开了吗(避开出问题)
+
+# 每几步输出波函数
+```
+ nwevc=200    #每200步输出
+ punchks=.True. #输出KS波函数
+ punchtdks=.True. #输出TDKS波函数
+```
+# 读入每一步输出的波函数，重新构造非自洽计算
+设置：
+```
+outdir='./'   #输出文件的目录
+wfcdir 同outdir
+restart_mode='restart'
+startingwfc='file' #由prefix和outdir指定的目录包含着开始演化的波函数
+startingpot='file' #从charge-density.xml文件开始读取势场
+```
