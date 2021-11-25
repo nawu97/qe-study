@@ -9,6 +9,7 @@ constrained_magnetization	CHARACTER
 ## 说明：
 ### `starting_magnetization(i), i=1,ntyp`
 指定一个原子上的磁矩，从1（up）到-1（down），如果不设置的话是0，这会算不出来磁矩
+-1的时候应该是自旋极化的时候（nspin=2）
 ### `angle1(i) , i=1,ntyp`
 指定初始磁矩与z方向的夹角
 ### `angle2(i),i=1,ntyp`
