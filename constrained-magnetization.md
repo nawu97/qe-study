@@ -21,7 +21,7 @@ constrained_magnetization	CHARACTER
 ```
 'none' #默认
 'total' #在总能中添加惩罚函数约束总磁矩
-'atomic' #在初始磁矩中添加约束函数约束原子磁矩
+'atomic' #在初始磁矩中添加约束函数约束原子磁矩  #如果是该选项，starting——magnetization=1不要改变了在变化
 'total direction' #约束总磁矩与z轴之间的夹角(theta = fixed_magnetization(3))
 'atomic direction' #并非所有原子磁矩的成分被约束，只是angle1被约束
 
