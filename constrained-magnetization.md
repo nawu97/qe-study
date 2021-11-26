@@ -18,6 +18,7 @@ constrained_magnetization	CHARACTER
 ### `fixed_magnetization(i), i=1,3	REAL `
 ### 'fixed_magnetization(i), i=1,3	REAL' 
 当constrained_magnetization='total'总磁矩的各个分量固定
+### `starting_spin_angle	`
 选择有：
 ```
 'none' #默认
