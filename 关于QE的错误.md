@@ -1013,7 +1013,7 @@ use a symmetry-conserving algorithm: the Wentzcovitch algorithm (cell dynamics='
 1.增加截断能 2.提高收敛标准
 
 
-42.
+# 42.
 ```
 Error termination. Backtrace:
 At line 60 of file lambda.f90 (unit = 5, file = 'stdin')
@@ -1022,7 +1022,7 @@ Fortran runtime error: End of file
 
 ```
 
-43.
+# 43.
 ```
  kpoint   3 ibnd  45 solve_linter: root not converged  1.038E+12
      kpoint   4 ibnd  46 solve_linter: root not converged  1.732E+00
@@ -1053,4 +1053,10 @@ Fortran runtime error: End of file
 ```
 降低alpha_mixing=0.1调整nq mesh
 
-
+# 44
+```
+Error in routine scale_sym_ops (8):      incompatible FFT grid
+```
+根据https://www.mail-archive.com/users@lists.quantum-espresso.org/msg39583.html
+设置了use_all_frac=.true.也没有用
+Polo说这是QE6.6的问题于是更换了6.5解决了
